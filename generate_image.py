@@ -2,7 +2,7 @@ import openai
 import base64
 
 # Set your OpenAI API key
-openai.api_key = "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"
+#openai.api_key = ''
 
 
 def generate_image(prompt, output_file="generated_image.png"):
