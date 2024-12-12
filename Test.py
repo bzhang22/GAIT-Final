@@ -391,7 +391,7 @@ def trigger_enemy_shake(enemy_type):
 
 # Create a semi-transparent wall surface
 wall_surface = pygame.Surface((CELL_SIZE, CELL_SIZE), pygame.SRCALPHA)
-wall_alpha = 150  # 0 (fully transparent) to 255 (fully opaque)
+wall_alpha = 0  # 0 (fully transparent) to 255 (fully opaque)
 wall_color = BROWN + (wall_alpha,)  # Adding alpha to the color
 wall_surface.fill(wall_color)
 
