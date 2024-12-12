@@ -105,6 +105,15 @@ enemy_images = {
     "boss": load_and_resize_image(r"./images/Dragon #2-2.png", CELL_SIZE * 4, CELL_SIZE * 4)
 }
 
+# HD versions of images for battle screen
+player_image_hd = load_and_resize_image(r"./images/mainguy_hd.png", 200, 200)
+enemy_images_hd = {
+    "common": load_and_resize_image(r"./images/Gobby-4_hd.png", 200, 200),
+    "tough": load_and_resize_image(r"./images/Skelly-2_hd.png", 200, 200),
+    "elite": load_and_resize_image(r"./images/KING CROC-2_hd.png", 225, 225),
+    "boss": load_and_resize_image(r"./images/Dragon #2-2.png", 250, 250)
+}
+
 # Enemy data
 ENEMY_TYPES = {
     "common": {"health": 10, "attack": 2, "xp": 5},
@@ -180,14 +189,16 @@ def draw_battle_screen():
         screen.blit(fight_background_image, (0, 0))
 
     # Draw the player
-    player_rect = pygame.Rect(100, 200, 120, 120)
-    scaled_player_image = pygame.transform.scale(player_image, (120, 120))
-    screen.blit(scaled_player_image, player_rect)
+    player_rect = pygame.Rect(100, 200, 240, 240)
+    screen.blit(player_image_hd, player_rect)
 
     # Draw the enemy
-    enemy_rect = pygame.Rect(350, 200, 150, 150)
-    scaled_enemy_image = pygame.transform.scale(enemy_images[current_enemy["type"]], (150, 150))
-    screen.blit(scaled_enemy_image, enemy_rect)
+    enemy_type = current_enemy["type"]
+    if enemy_type == "boss":
+        enemy_rect = pygame.Rect(350, 150, 480, 480)
+    else:
+        enemy_rect = pygame.Rect(350, 200, 240, 240)
+    screen.blit(enemy_images_hd[enemy_type], enemy_rect)
 
     # Draw a background for text
     text_bg_rect = pygame.Rect(50, 400, 500, 200)
